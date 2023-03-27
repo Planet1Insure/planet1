@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Management</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>User Management</h1>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <button type="button" onclick="createUser()">Create User</button>
+    </form>
+
+    <hr>
+
+    <h2>User List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="user-list">
+            <!-- User data will be displayed here -->
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>Update User</h2>
+    <form>
+        <label for="update-name">Name:</label>
+        <input type="text" id="update-name" name="update-name"><br><br>
+        <label for="update-email">Email:</label>
+        <input type="text" id="update-email" name="update-email"><br><br>
+        <button type="button" onclick="updateUser()">Update User</button>
+    </form>
+
+    <hr>
+
+    <h2>Delete User</h2>
+    <form>
+        <label for="delete-email">Email:</label>
+        <input type="text" id="delete-email" name="delete-email"><br><br>
+        <button type="button" onclick="deleteUser()">Delete User</button>
+    </form>
+
+    <script>
+        function createUser() {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const data = {name, email, password};
+            axios.post('/create-user.php', data)
+                .then(response => console.log(response))
+                .catch(error => console.error(error));
+        }
+
+        function readUser() {
+            axios.get('/read-user.php')
+                .then(response => {
+                    const userList = document.getElementById("user-list");
+                   
+// Clearing any existing user data in the table
+userList.innerHTML = "";
+response.data.forEach(user => {
+// Adding user data to the table
+const tr = document.createElement("tr");
+const nameTd = document.createElement("td");
+const emailTd = document.createElement("td");
+const actionTd = document.createElement("td");
+const updateBtn = document.createElement("button");
+const deleteBtn = document.createElement("button");
+
+                    nameTd.textContent = user.name;
+                    emailTd.textContent = user.email;
+
+                    updateBtn.textContent = "Update";
+                    updateBtn.addEventListener("click", () => {
+                        // Pre-filling update form with user data
+                        document.getElementById("update-name").value = user.name;
+                        document.getElementById("update-email").value = user.email;
+                    });
+
+                    deleteBtn.textContent = "Delete";
+                    deleteBtn.addEventListener("click", () => {
+                        // Pre-filling delete form with user email
+                        document.getElementById("delete-email").value = user.email;
+                    });
+
+                    actionTd.appendChild(updateBtn);
+                    actionTd.appendChild(deleteBtn);
+
+                    tr.appendChild(nameTd);
+                    tr.appendChild(emailTd);
+                    tr.appendChild(actionTd);
+
+                    userList.appendChild(tr);
+                });
+            })
+            .catch(error => console.error(error));
+    }
+
+    function updateUser() {
+        const name = document.getElementById("update-name").value;
+        const email = document.getElementById("update-email").value;
+        const data = {name, email};
+        axios.put('/update-user.php', data)
+            .then(response => console.log(response))
+            .catch(error => console.error(error));
+    }
+
+    function deleteUser() {
+        const email = document.getElementById("delete-email").value;
+        axios.delete('/delete-user.php', {data: {email}})
+            .then(response => console.log(response))
+            .catch(error => console.error(error));
+    }
+</script>

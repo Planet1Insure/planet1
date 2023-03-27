@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="stylesheet" href="style.css">
+    <title>Planet 1 Insurance </title>
+    
+  </head>
+  <body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 fixed-top">
+        <div class="container">
+     
+        <button
+           class="navbar-toggler"
+           type="button"
+           data-bs-toggle="collapse"
+           data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a href="index.html" class="nav-link">Home</a>
+                </li>
+          
+          <li class="nav-item">
+            <a href="Aboutus.html" class="nav-link">About Us</a>
+          </li>
+          
+          <li class="nav-item">
+              <a href="Resources.html" class="nav-link">Resources</a>
+          </li>
+          
+          <li class="nav-item">
+              <a href="Sign_up.html" class="nav-link">Sign Up</a>
+          </li>
+          
+          <li class="nav-item">
+              <a href="Login.html" class="nav-link">Log In</a>
+          </li>
+            </ul>
+        </div>  
+    </div>
+    </nav>
+   
+      
+      
+    <!-- Showcase -->
+
+   <section class="bg-dark text-light p-5 p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <div>
+                    <h1 text-center> Welcome To <span class="text-warning">Planet 1 Insurance</span></h1>
+               <p class="lead my=4">
+                Revolutionizing motor insurance with cutting-edge technology
+               </p>
+               
+                </div>
+              <!--<img class="img-fluid w-50 d-none d-sm-block" src="images/Logosp.jpg" alt="Company logo">  -->
+            </div>
+            </div>
+    </section>
+
+    <style>
+        body {
+          display: flex;
+          flex-direction: column;
+          align-items: right;
+          justify-content:right;
+          min-width: 20%;
+          height: 20%;
+        }
+        form {
+          display: flex;
+          flex-direction: column;
+          align-items: right;
+          justify-content: right;
+          background-color: #f2f2f2;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0px 0px 10px #999;
+        }
+        input[type="text"], input[type="email"], input[type="text"], input[type="message"] {
+          width: 30%;
+          padding: 10px;
+          margin: 2px;
+          border-radius: 5px;
+          border: none;
+        }
+  
+        input[type="submit"], input[type="Submit"] {
+          padding: 10px 20px;
+          width: 10%;
+          margin: 10px;
+          border: none;
+          border-radius: 5px;
+          color: #fff;
+          background-color: #0099ff;
+          cursor: pointer;
+        }
+
+   
+         #message {
+        height: 100px;
+        width: 450px;
+        }
+ 
+        h4 {
+        text-align: center;
+        margin-top: 50px; /* optional, add some space between the top of the page and the heading */
+         }   
+
+      </style>
+	
+    <h4>Customer Feedback Form</h4>
+
+	<form action="FeedbackForm.php" id="feedback-form" method="post">
+
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name" required pattern="[A-Za-z]+">
+
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+
+		<label for="subject">Subject:</label>
+		<input type="text" id="subject" name="subject" required>
+
+		<label for="message">Message:</label>
+		<textarea id="message" name="message" required pattern="[A-Za-z]+[a-z0-9._%+-]+[a-z0-9.-]+\.[a-z]{2,}$"></textarea>
+
+		<input type="submit" value="Submit">
+	</form>
+
+	<script>
+		// JavaScript code to handle form submission
+		var form = document.getElementById("feedback-form");
+
+		form.addEventListener("submit", function(event) {
+			event.preventDefault();
+			var data = new FormData(form);
+			var xhr = new XMLHttpRequest();
+
+			xhr.open("POST", "FeedbackForm.php", true);
+			xhr.send(data);
+
+			alert("Thank you for your feedback!");
+			form.reset();
+		});
+	</script>
+
+
+
+   <!--Contact-->
+  <section class="p-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md">
+          <h2 class="text-center mb-4">Contact Info</h2>
+          <ul class="list-group list-group-flush lead">
+            <li class="list-group-item">
+              <span class="fw-bold">Main Location:</span> 20, Mercy Street, Lagos, Nigeria
+            </li>
+            <li class="list-group-item">
+              <span class="fw-bold">Customer Service number 1:</span> (+234) 80343 99 194
+            </li>
+            <li class="list-group-item">
+              <span class="fw-bold">Customer Service number 2:</span> (+234) 80343 99 194
+            </li>
+            <li class="list-group-item">
+              <span class="fw-bold">Email:</span>
+              info@planet1.com
+            </li>
+          </ul>
+        </div>
+        <div class="col-md">
+          <div id="map"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <!-- Footer -->
+   <footer class="p-5 bg-dark text-white text-center position-relative">
+    <div class="container">
+      <p class="lead">Copyright &copy; 2023 Planet 1 Insurance Plc</p>
+
+      <a href="#" class="position-absolute bottom-0 end-0 p-5">
+        <i class="bi bi-arrow-up-circle h1"></i>
+      </a>
+    </div>
+
+    <a href="#"><i class="bi bi-twitter text text-drak mx-1">
+    </i></a>
+    <a href="#"><i class="bi bi-instagram text text-drak mx-1">
+    </i></a>
+    <a href="#"><i class="bi bi-facebook text text-drak mx-1">
+    </i></a>
+    <a href="#"><i class="bi bi-linkedin text text-drak mx-1">
+    </i></a>
+
+    
+  </footer>
+
+   
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+      
+      
+    
+</body>
+</html>
