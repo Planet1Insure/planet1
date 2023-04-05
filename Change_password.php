@@ -47,7 +47,9 @@ if (!$row || $row['password'] !== md5($current_password)) {
   echo "Password updated successfully!<br>";
   echo "You will be redirected to the login page in a few seconds.";
   $output = ob_get_clean(); // get the buffered output
-  header("refresh:5;url=login.html");
+  echo "Password updated successfully!<br>";
+  echo "You will be redirected to the login page in a few seconds.";
+  header("refresh:3;url=login.html");
   exit(); // terminate script execution immediately after the redirect
 }
 

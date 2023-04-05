@@ -11,6 +11,8 @@
   </head>
   <body>
 
+  
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 fixed-top">
         <div class="container">
@@ -48,7 +50,7 @@
 
                
                  
-                  <a href="#"><i class="bi bi-twitter text text-drak mx-1">
+                  <a href="Twitter.com"><i class="bi bi-twitter text text-drak mx-1">
                   </i></a>
                   <a href="#"><i class="bi bi-instagram text text-drak mx-1">
                   </i></a>
@@ -85,19 +87,103 @@
       <a href="FeedbackForm.html">
         <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="quote">Click To Access Customer Feedback Page</button>
       </a>
-      <div id="popup-message">
-        
-<button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="quote" id="like-button">Dear User, <br> Please be informed that it is Important to accept Data Privacy Policy of The Company before proceeding. <br> Click To View Data Privacy Condition</button>
-<div id="popup-message-box" style="display:none;">
-  <p>Thank you for viewing our privacy conditions!</p>
-
       
-    </section>
- 
-   
-   
-    
+      
+  <style>
+#modalbox {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 39%;
+  background-color: rgba(15, 15, 14, 0.986);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.modal-content {
+background-color: #dec506;
+padding: 20px;
+border-radius: 5px;
+box-shadow: 0 0 10px rgba(238, 180, 6, 0.796);
+text-align: center;
+}
+
+.modal-content p {
+margin-bottom: 20px;
+}
+
+#accept-button {
+background-color: #f9f7f7;
+color: #000000;
+border: 5px;
+border-radius: 2px;
+padding: 5px 10px;
+cursor: pointer;
+}
+
+.close-icon {
+position: absolute;
+right: 10px;
+cursor: pointer;
+}
+
+/* Hide scroll bar when modal is open */
+body.modal-open {
+overflow: hidden;
+}
+ </style>
+ 
+   <div id="modalbox" style="display:none">
+     <p style="color: rgb(254, 251, 251)">
+      <div style="text-align: center;">
+      <h6><b>Cookies Notice</b></h6>This website uses cookies to optimize user experience and content.
+      <br> If you are interested in learning more about how Planet One Insurance utilizes cookies, please refer to our Cookies Notice 
+      by clicking on the provided link. This document provides detailed information on the types of cookies we use, how we use them, 
+      and your options for managing them.
+
+We take your privacy and data security seriously, and we are committed to being transparent about how we collect and use your personal 
+information. By reviewing our Cookies Notice, you can have a better understanding of how our website operates and how we protect your data.
+
+Thank you for your interest in Planet One Insurance, and we look forward to serving you. 
+<a href="PrivacyState.html" class="nav-link" style="color: rgb(255, 217, 0);">Click to read more about Cookies Notice</a> 
+Please, accept to proceed.
+</p>
+     <button type="button" id="accept-button">Accept</button>
+     <img src="images/cookies.jpg" class="close-icon" alt="Close">
+   </div>
+  </div>
+ 
+   <script>
+     let modalBox = document.getElementById("modalbox");
+     let acceptButton = document.getElementById("accept-button");
+     let closeButton = document.querySelector(".close-icon");
+ 
+     function showModal() {
+       setTimeout(() => {
+         modalBox.style.display = "block";
+       }, 1000);
+     }
+ 
+     function hideModal() {
+       modalBox.style.display = "none";
+     }
+ 
+     acceptButton.addEventListener("click", hideModal);
+     closeButton.addEventListener("click", hideModal);
+ 
+     showModal();
+   </script>
+      
+     
+</section>
+
+
+
+    
    <!-- another section-->
    <section id="M" class="p-5 bg-primary">
     <div class="container">
@@ -247,23 +333,14 @@
         <i class="bi bi-arrow-up-circle h1"></i>
       </a>
     </div>
-
-    <a href="#"><i class="bi bi-twitter text text-drak mx-1">
-    </i></a>
-    <a href="#"><i class="bi bi-instagram text text-drak mx-1">
-    </i></a>
-    <a href="#"><i class="bi bi-facebook text text-drak mx-1">
-    </i></a>
-    <a href="#"><i class="bi bi-linkedin text text-drak mx-1">
-    </i></a>
-
     
   </footer>
 
   <!-- Modal -->
   
 
-  
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
       

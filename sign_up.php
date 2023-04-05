@@ -59,14 +59,17 @@ if (strlen($password) < $min_password_length) {
 
         // Execute SQL statement
         if ($conn->query($sql) === TRUE) {
-            echo "New record created successfully";
-            header("Location: login.html");
+            echo "New record created successfully. You will be redirected to the login page in 3 seconds";
+            // Delay the redirection by 3 seconds
+            header("Refresh: 3; URL=login.html");
+            exit; // stop script execution
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
-    }
-
-    // Close database connection
-    $conn->close();
+        
+        // Close database connection
+        $conn->close();
+        
+}
 }
 ?>

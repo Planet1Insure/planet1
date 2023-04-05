@@ -25,15 +25,18 @@ if(isset($_POST["submit"])) {
         mysqli_query($conn, $query);
         
         echo "File uploaded successfully.";
-        header()
-      }
-      else {
+        // Delay the redirection by 3 seconds
+        header("Refresh: 2; URL=Fileupload.html");
+            exit; // stop script execution
+      
+      } else {
         echo "Error uploading file.";
       }
     }
     else {
       echo "Invalid file type or size. Only JPG, PNG, and GIF files up to 5MB are allowed.";
     }
+
   }
 }
 ?>
